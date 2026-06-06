@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>インターン ES提出状況</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 24px;
+    }
+    .card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 32px 40px;
+      max-width: 480px;
+      width: 100%;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+      border: 1px solid #f0f0f0;
+    }
+    h2 {
+      font-size: 18px;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 4px;
+      text-align: center;
+    }
+    .subtitle {
+      font-size: 12px;
+      color: #999;
+      text-align: center;
+      margin-bottom: 28px;
+    }
+    .chart-wrap {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 28px;
+      position: relative;
+    }
+    svg { overflow: visible; }
+    .center-text {
+      text-anchor: middle;
+      dominant-baseline: middle;
+    }
+    .legend {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      color: #333;
+    }
+    .legend-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 3px;
+      flex-shrink: 0;
+    }
+    .legend-label { font-weight: 500; }
+    .legend-count {
+      font-size: 20px;
+      font-weight: 700;
+      margin-right: 2px;
+    }
+    .stat-row {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      margin-top: 24px;
+      padding-top: 20px;
+      border-top: 1px solid #f0f0f0;
+    }
+    .stat {
+      text-align: center;
+    }
+    .stat-num {
+      font-size: 28px;
+      font-weight: 800;
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 11px;
+      color: #999;
+      margin-top: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>📊 インターン ES提出状況</h2>
+    <p class="subtitle">インターン一覧 · 全23社</p>
+
+    <div class="chart-wrap">
+      <svg width="220" height="220" viewBox="0 0 220 220">
+        <!-- ドーナツチャート: ✅あり 13/23, ✅なし 10/23 -->
+        <!-- ✅あり: #4f7cf9 -->
+        <!-- ✅なし: #e8ecf5 -->
+        <circle cx="110" cy="110" r="80" fill="none" stroke="#e8ecf5" stroke-width="36"/>
+        <!-- 13/23 = 0.5652... → stroke-dasharray: 0.5652 * 2π * 80 -->
+        <!-- circumference = 502.65 → 13/23 * 502.65 = 284.15 -->
+        <circle cx="110" cy="110" r="80"
+          fill="none"
+          stroke="#4f7cf9"
+          stroke-width="36"
+          stroke-dasharray="284.15 502.65"
+          stroke-dashoffset="125.66"
+          stroke-linecap="round"
+          transform="rotate(-90 110 110)"
+        />
+        <!-- 中央テキスト -->
+        <text x="110" y="104" class="center-text" font-size="32" font-weight="800" fill="#1a1a1a">13</text>
+        <text x="110" y="128" class="center-text" font-size="12" fill="#999">/ 23社</text>
+      </svg>
+    </div>
+
+    <div class="legend">
+      <div class="legend-item">
+        <div class="legend-dot" style="background:#4f7cf9;"></div>
+        <span class="legend-label">✅ ES提出済み</span>
+        &nbsp;
+        <span class="legend-count" style="color:#4f7cf9;">13</span>社
+      </div>
+      <div class="legend-item">
+        <div class="legend-dot" style="background:#e0e4ef;"></div>
+        <span class="legend-label">未提出</span>
+        &nbsp;
+        <span class="legend-count" style="color:#aaa;">10</span>社
+      </div>
+    </div>
+
+    <div class="stat-row">
+      <div class="stat">
+        <div class="stat-num" style="color:#4f7cf9;">57%</div>
+        <div class="stat-label">提出済み</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num" style="color:#ccc;">43%</div>
+        <div class="stat-label">未提出</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num" style="color:#333;">23</div>
+        <div class="stat-label">総エントリー数</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
